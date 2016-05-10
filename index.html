@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Backbone.js • Rafael</title>
+  <!-- <link rel="stylesheet" href="assets/style.css"> -->
+</head>
+<body>
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/underscore.js"></script>
+  <script src="js/lib/backbone.js"></script>
+  <script src="js/lib/backbone.localStorage.js"></script>
+  <script src="js/app.js"></script>
+
+ <div id="team">
+
+   <div class="players-wrapper">
+    <ul class="players">
+
+    </ul>
+    <div class="botao">Adicionar Jogador</div>
+   </div>
+
+ </div>
+
+ <script type="text/template" id="player-template">
+    <p class="name">Nome do jogador: <%= name %></p>
+    <p class="position">Posição: <%= position %></p>
+    <p class="number">Número: <%= number %></p>
+    <p class="matches">Jogos: <%= matches %></p>
+    <p class="clicar">Clicar</p>
+</script>
+
+</body>
+</html>
