@@ -4,7 +4,8 @@ var App = {
   Views: {}
 
 }
-var PlayerModel = Backbone.Model.extend({
+
+App.Models.PlayerModel = Backbone.Model.extend({
   defaults: {
     name: 'Player Name Default',
     position: 'Player Position Default',
@@ -66,11 +67,11 @@ var PlayerModel = Backbone.Model.extend({
 
 });
 
-var PlayersCollection = Backbone.Collection.extend({
-  model: PlayerModel,
+App.Collections.PlayersCollection = Backbone.Collection.extend({
+  model: App.Models.PlayerModel,
 });
 
-var playersCollection = new PlayersCollection([
+App.Collections.playersCollection = new App.Collections.PlayersCollection([
   {
     name: 'Fernando Prass',
     position: 'Goleiro',
@@ -88,10 +89,7 @@ var playersCollection = new PlayersCollection([
   }
 ]);
 
-var SearchView = Backbone.View.extend();
-var search_view = new SearchView();
-
-var PlayerView = Backbone.View.extend({
+App.Views.PlayerView = Backbone.View.extend({
 
   tagName: 'li',
   // model: playerModel,
@@ -130,10 +128,10 @@ var PlayerView = Backbone.View.extend({
 
 });
 
-var PlayersView = Backbone.View.extend({
+App.Views.PlayersView = Backbone.View.extend({
 
   el: '.players-wrapper',
-  collection: playersCollection,
+  collection: App.Collections.playersCollection,
 
   initialize: function(){
     console.log('TeamView iniciada...');
@@ -142,7 +140,7 @@ var PlayersView = Backbone.View.extend({
 
   render: function(){
     this.collection.each(function(player) {
-      var playerView = new PlayerView({ model: player });
+      var playerView = new App.Views.PlayerView({ model: player });
       console.log(playerView);
       this.$el.find('.players').append(playerView.render().el);
     }, this);
@@ -169,5 +167,5 @@ var PlayersView = Backbone.View.extend({
 });
 
 $(function() {
-  var myView = new PlayersView();
+  var myView = new App.Views.PlayersView();
 });
